@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
-    "summary": "Generic form builder in Elm",
-    "repository": "https://github.com/user/project.git",
+    "summary": "Field for FormBuilder: photo selector",
+    "repository": "https://github.com/elm-bodybuilder/formbuilder-photo.git",
     "license": "MIT",
     "source-directories": [
         "src"
