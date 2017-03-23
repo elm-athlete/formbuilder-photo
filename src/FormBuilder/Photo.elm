@@ -67,7 +67,7 @@ photosAlbumsView event selectedPhotoId (( name, photos ) as photosAlbum) =
                     ]
                 ]
                 (photos
-                    |> List.map (selectableImage (selectedPhotoId |> withDefault "") event)
+                    |> List.map (\photo -> selectableImage (selectedPhotoId |> withDefault photo) event photo)
                     |> List.reverse
                 )
             ]
