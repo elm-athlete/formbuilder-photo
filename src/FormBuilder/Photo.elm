@@ -96,12 +96,22 @@ photoEvent { photosAlbums, selectedPhotoId, onPhotoClick } =
 
 input : FieldView (PhotoAttributes msg) msg
 input attributes =
-    Html.div
-        []
-        [ photoEvent attributes
-        , FieldBuilder.defaultHidden
-            [ Attributes.objectName <| Maybe.withDefault "" <| attributes.common.objectName
-            , Attributes.fieldName <| Maybe.withDefault "" <| attributes.common.fieldName
-            , Attributes.value <| Maybe.withDefault "" <| attributes.common.value
-            ]
-        ]
+    Html.div []
+        (photoEvent attributes
+            :: case attributes.common.objectName of
+                Nothing ->
+                    []
+
+                Just objectName ->
+                    case attributes.common.fieldName of
+                        Nothing ->
+                            []
+
+                        Just fieldName ->
+                            [ FieldBuilder.defaultHidden
+                                [ Attributes.objectName objectName
+                                , Attributes.fieldName fieldName
+                                , Attributes.value <| Maybe.withDefault "" <| attributes.common.value
+                                ]
+                            ]
+        )
